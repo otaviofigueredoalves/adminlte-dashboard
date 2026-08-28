@@ -1,4 +1,4 @@
-<x-parts.meta/>
+<x-parts.meta :title="$title" />
 <body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
 <div class="app-wrapper">
     <x-parts.header/>
