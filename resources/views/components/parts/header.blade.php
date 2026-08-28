@@ -20,7 +20,7 @@
                         class="user-image rounded-circle shadow"
                         alt="User Image"
                     />
-                    <span class="d-none d-md-inline">Alexander Pierce</span>
+                    <span class="d-none d-md-inline">{{ auth()->user()->name }}</span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
                     <li class="user-header text-bg-primary">
@@ -30,6 +30,7 @@
                             alt="User Image"
                         />
                         <p>
+                            {{ auth()->user()->name }}
                             <small>Member since Nov. 2023</small>
                         </p>
                     </li>
