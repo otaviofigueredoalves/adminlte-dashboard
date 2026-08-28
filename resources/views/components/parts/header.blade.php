@@ -20,7 +20,7 @@
                         class="user-image rounded-circle shadow"
                         alt="User Image"
                     />
-                    <span class="d-none d-md-inline">Alexander Pierce</span>
+                    <span class="d-none d-md-inline">{{ auth()->user()->name }}</span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
                     <li class="user-header text-bg-primary">
@@ -30,7 +30,7 @@
                             alt="User Image"
                         />
                         <p>
-                            Alexander Pierce - Web Developer
+                            {{ auth()->user()->name }}
                             <small>Member since Nov. 2023</small>
                         </p>
                     </li>
@@ -48,8 +48,11 @@
                         </div>
                     </li>
                     <li class="user-footer">
-                        <a href="#" class="btn btn-outline-secondary">Profile</a>
-                        <a href="#" class="btn btn-outline-danger float-end">Sign out</a>
+                        <form action="{{ route('logout') }}" method="post">
+                            @csrf
+                            <a href="#" class="btn btn-outline-secondary">Profile</a>
+                            <button type="submit" class="btn btn-outline-danger float-end">Logout</button>
+                        </form>
                     </li>
                 </ul>
             </li>
