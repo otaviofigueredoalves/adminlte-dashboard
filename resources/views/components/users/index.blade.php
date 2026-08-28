@@ -1,6 +1,6 @@
 <x-layouts.app>
     <x-slot:title>
-        Usuários
+        {{ $config['title'] }}
     </x-slot:title>
     <x-parts.header-content :hTitle="$config['hTitle']"/>
 
@@ -21,8 +21,12 @@
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>
-                            <button type="submit" class="btn btn-primary">Editar</button>
+                            <form action="{{ route('users.edit',$user) }}" method="get" class="d-inline-block">
+                                @csrf
+                                <button type="submit" href="" class="btn btn-primary">Editar</button>
+                            </form>
                             <button type="submit" class="btn btn-danger">Excluir</button>
+
                         </td>
                     </tr>
                 @endforeach
