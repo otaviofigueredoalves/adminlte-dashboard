@@ -24,7 +24,7 @@
                 id="navigation"
             >
                 <li class="nav-item">
-                    <a href="./generate/theme.html" class="nav-link">
+                    <a href="{{ route('users.index') }}" class="nav-link">
                         <i class="nav-icon bi bi-person"></i>
                         <p>Usuários</p>
                     </a>
