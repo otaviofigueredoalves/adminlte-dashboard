@@ -7,4 +7,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth'])->group(function () {
     Route::get('/',[HomeController::class,'index'])->name('home');
     Route::get('/usuarios',[UserController::class,'index'])->name('users.index');
+    Route::get('/usuarios/{user}/editar',[UserController::class,'edit'])->name('users.edit');
+    Route::put('/usuarios/{user}/editar',[UserController::class,'update'])->name('users.update');
 });
