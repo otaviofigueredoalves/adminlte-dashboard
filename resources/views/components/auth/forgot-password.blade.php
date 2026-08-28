@@ -1,14 +1,14 @@
 <x-layouts.auth class="login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href="../index2.html"><b>Admin</b>LTE</a>
+            <a href="{{ route('home') }}"><b>Admin</b>LTE</a>
         </div>
         <!-- /.login-logo -->
         <div class="card">
             <div class="card-body login-card-body">
-                <p class="login-box-msg">login a new membership</p>
+                <p class="login-box-msg">Esqueceu a senha? Troque aqui</p>
 
-                <form action="{{ route('login.store') }}" method="post" class="mb-3">
+                <form action="{{ route('password.email') }}" method="post" class="mb-3">
                     @csrf
                     <div class="input-group mb-3">
                         <div class="input-group-text">
@@ -21,23 +21,12 @@
                         </div>
                         @enderror
                     </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-text">
-                            <span class="bi bi-lock-fill"></span>
-                        </div>
-                        <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password" name="password" value="{{ old('password') }}"/>
-                        @error('password')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                        @enderror
-                    </div>
                     <!--begin::Row-->
                     <div class="row">
                         <!-- /.col -->
                         <div>
                             <div class="d-grid gap-2">
-                                <button type="submit" class="btn btn-primary">Entrar</button>
+                                <button type="submit" class="btn btn-primary">Solicitar a troca de senha</button>
                             </div>
                         </div>
                         <!-- /.col -->
@@ -46,7 +35,7 @@
                 </form>
 
                 <p class="mb-0 mt-6">
-                    <a href="{{ route('register') }}" class="text-center">Criar nova conta</a>
+                    <a href="{{ route('login') }}" class="text-center">Lembrou? Tente entrar na conta</a>
                 </p>
             </div>
             <!-- /.login-card-body -->

@@ -1,26 +1,20 @@
-<x-layouts.auth class="register-page">
-    <div class="register-box">
-        <div class="register-logo">
-            <a href="../index2.html"><b>Admin</b>LTE</a>
+<x-layouts.auth class="login-page">
+    <div class="login-box">
+        <div class="login-logo">
+            <a href="{{ route('home') }}"><b>Admin</b>LTE</a>
         </div>
-        <!-- /.register-logo -->
+        <!-- /.login-logo -->
         <div class="card">
-            <div class="card-body register-card-body">
-                <p class="register-box-msg">Register a new membership</p>
+            <div class="card-body login-card-body">
+                <p class="login-box-msg">Entre na sua conta</p>
 
-                <form action="{{ route('register.store') }}" method="post" class="mb-3">
+                <form action="{{ route('login.store') }}" method="post" class="mb-3">
                     @csrf
-                    <div class="input-group mb-3">
-                        <div class="input-group-text">
-                            <span class="bi bi-person"></span>
+                    @if (session('status'))
+                        <div class="alert alert-success">
+                            {{ session('status') }}
                         </div>
-                        <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Full Name" name="name" value="{{ old('name') }}" />
-                        @error('name')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
+                    @endif
                     <div class="input-group mb-3">
                         <div class="input-group-text">
                             <span class="bi bi-envelope"></span>
@@ -43,23 +37,12 @@
                         </div>
                         @enderror
                     </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-text">
-                            <span class="bi bi-lock-fill"></span>
-                        </div>
-                        <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" placeholder="Repeat password" name="password_confirmation"/>
-                        @error('password_confirmation')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                        @enderror
-                    </div>
                     <!--begin::Row-->
                     <div class="row">
                         <!-- /.col -->
-                        <div class="col-4">
+                        <div>
                             <div class="d-grid gap-2">
-                                <button type="submit" class="btn btn-primary">Sign In</button>
+                                <button type="submit" class="btn btn-primary">Entrar</button>
                             </div>
                         </div>
                         <!-- /.col -->
@@ -67,11 +50,12 @@
                     <!--end::Row-->
                 </form>
 
-                <p class="mb-0 mt-6">
-                    <a href="login.html" class="text-center">Tenho conta</a>
+                <p class="mb-0 mt-6 d-flex justify-content-between gap-2">
+                    <a href="{{ route('register') }}" class="text-center">Criar nova conta</a>
+                    <a href="{{ route('password.request') }}" class="text-center">Esqueci minha senha</a>
                 </p>
             </div>
-            <!-- /.register-card-body -->
+            <!-- /.login-card-body -->
         </div>
     </div>
 

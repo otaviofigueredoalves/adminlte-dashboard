@@ -30,7 +30,6 @@
                             alt="User Image"
                         />
                         <p>
-                            Alexander Pierce - Web Developer
                             <small>Member since Nov. 2023</small>
                         </p>
                     </li>
@@ -48,8 +47,11 @@
                         </div>
                     </li>
                     <li class="user-footer">
-                        <a href="#" class="btn btn-outline-secondary">Profile</a>
-                        <a href="#" class="btn btn-outline-danger float-end">Sign out</a>
+                        <form action="{{ route('logout') }}" method="post">
+                            @csrf
+                            <a href="#" class="btn btn-outline-secondary">Profile</a>
+                            <button type="submit" class="btn btn-outline-danger float-end">Logout</button>
+                        </form>
                     </li>
                 </ul>
             </li>
