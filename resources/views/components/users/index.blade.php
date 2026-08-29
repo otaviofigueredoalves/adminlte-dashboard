@@ -25,8 +25,9 @@
                                 @csrf
                                 <button type="submit" href="" class="btn btn-primary">Editar</button>
                             </form>
-                            <button type="submit" class="btn btn-danger">Excluir</button>
-
+                            @can('Admin',$user)
+                                <button type="submit" class="btn btn-danger">Excluir</button>
+                            @endcan
                         </td>
                     </tr>
                 @endforeach
