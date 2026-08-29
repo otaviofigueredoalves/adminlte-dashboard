@@ -4,7 +4,7 @@
     </x-slot:title>
     <x-parts.header-content :hTitle="$config['hTitle']"/>
 
-    <div class="container">
+    <div class="container-fluid">
         <table class="table">
             <thead>
             <tr>

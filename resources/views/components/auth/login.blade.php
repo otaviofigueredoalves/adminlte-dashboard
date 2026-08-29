@@ -7,14 +7,13 @@
         <div class="card">
             <div class="card-body login-card-body">
                 <p class="login-box-msg">Entre na sua conta</p>
-
                 <form action="{{ route('login.store') }}" method="post" class="mb-3">
-                    @csrf
                     @if (session('status'))
                         <div class="alert alert-success">
                             {{ session('status') }}
                         </div>
                     @endif
+                    @csrf
                     <div class="input-group mb-3">
                         <div class="input-group-text">
                             <span class="bi bi-envelope"></span>

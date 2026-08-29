@@ -9,6 +9,11 @@
                 <p class="login-box-msg">Esqueceu a senha? Troque aqui</p>
 
                 <form action="{{ route('password.email') }}" method="post" class="mb-3">
+                    @if (session('status'))
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                        </div>
+                    @endif
                     @csrf
                     <div class="input-group mb-3">
                         <div class="input-group-text">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\UserProfile;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -23,7 +24,12 @@ class UserController extends Controller
         $config = [
             'title' => 'Configurações',
             'hTitle' => 'Editar usuário',
+            'types' => [
+                'PJ' => 'Pessoa Jurídica',
+                'PF' => 'Pessoa física'
+            ],
         ];
+        $user->load('profile');
         return view('components.users.edit', compact('user','config'));
     }
 
@@ -39,6 +45,19 @@ class UserController extends Controller
         }
 
         $user->update($input);
+        return back()
+            ->with('success','Perfil atualizado com sucesso!');
+    }
+    public function updateProfile(Request $request, User $user)
+    {
+        $input = $request->validate([
+            'type' => ['nullable','string','max:255'],
+            'address' => ['nullable','string','max:255']
+        ]);
+        UserProfile::updateOrCreate([
+            'user_id' => $user->id
+        ], $input);
+
         return back()
             ->with('success','Perfil atualizado com sucesso!');
     }
