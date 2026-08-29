@@ -4,7 +4,7 @@
         @csrf
         @method('PUT')
         <div class="card-header">
-            Interesses
+            Cargos
         </div>
         <div class="card-body">
             @foreach($config['roles'] as $role)

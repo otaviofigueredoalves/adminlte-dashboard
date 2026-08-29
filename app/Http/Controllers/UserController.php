@@ -6,12 +6,14 @@ use App\Models\Role;
 use App\Models\User;
 use App\Models\UserProfile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
     public function index()
     {
+        Gate::authorize('edit', auth()->user());
         $config = [
             'title' => 'Usuários',
             'hTitle' => 'Lista de usuários',
@@ -43,6 +45,7 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $input = $request->validate([
+            'name' => ['nullable','string','max:255'],
             'email' => ['required','string','email','max:255', Rule::unique('users','email')->ignore($user)],
             'password' => ['nullable','string','max:255'],
         ]);
@@ -85,6 +88,7 @@ class UserController extends Controller
     }
     public function updateRole(Request $request, User $user)
     {
+        Gate::authorize('admin',$user);
         $input = $request->validate([
             'role' => ['nullable','integer'],
         ]);

@@ -8,6 +8,8 @@
         <x-users.cards.basic-details :user="$user" :config="$config"/>
         <x-users.cards.profile :user="$user" :config="$config" />
         <x-users.cards.interests :user="$user" :config="$config"/>
-        <x-users.cards.roles :user="$user" :config="$config"/>
+        @can('admin',$user)
+            <x-users.cards.roles :user="$user" :config="$config"/>
+        @endcan
     </div>
 </x-layouts.app>

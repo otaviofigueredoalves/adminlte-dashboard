@@ -23,14 +23,20 @@
                 data-accordion="false"
                 id="navigation"
             >
-                <li class="nav-item">
-                    <a href="{{ route('users.index') }}" class="nav-link">
-                        <i class="nav-icon bi bi-person"></i>
-                        <p>Usuários</p>
-                    </a>
-                </li>
+                @can('edit',auth()->user())
+                    <li class="nav-item">
+                        <a href="{{ route('users.index') }}" class="nav-link">
+                            <i class="nav-icon bi bi-person"></i>
+                            <p>Usuários</p>
+                        </a>
+                @endcan
+                    </li><li class="nav-item">
+                        <a href="{{ route('users.edit',auth()->user()) }}" class="nav-link">
+                            <i class="nav-icon bi bi-person"></i>
+                            <p>Perfil</p>
+                        </a>
+                    </li>
             </ul>
-
         </nav>
     </div>
 </aside>
