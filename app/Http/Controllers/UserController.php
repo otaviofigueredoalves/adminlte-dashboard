@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use App\Models\User;
 use App\Models\UserProfile;
 use Illuminate\Http\Request;
@@ -32,9 +33,10 @@ class UserController extends Controller
                 ['label' => 'Futebol', 'value' => 'futebol'],
                 ['label' => 'BTS', 'value' => 'bts'],
                 ['label' => 'Games', 'value' => 'games']
-            ]
+            ],
+            'roles' => Role::all(),
         ];
-        $user->load('profile','interests');
+        $user->load('profile','interests','roles');
         return view('components.users.edit', compact('user','config'));
     }
 
@@ -79,6 +81,18 @@ class UserController extends Controller
         }
         return back()
             ->with('success','Interesses atualizados com sucesso!');
+
+    }
+    public function updateRole(Request $request, User $user)
+    {
+        $input = $request->validate([
+            'role' => ['nullable','integer'],
+        ]);
+
+        $user->roles()->sync($input);
+
+        return back()
+            ->with('success','Cargo atualizado com sucesso!');
 
     }
 }
