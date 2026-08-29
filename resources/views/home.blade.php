@@ -5,7 +5,7 @@
     <x-parts.header-content :hTitle="$config['hTitle']"/>
     <div class="app-content">
         <div class="container-fluid">
-            <h1>Aqui é o conteúdo</h1>
+            <h1>Olá, {{ auth()->user()->name }}</h1>
         </div>
     </div>
 </x-layouts.app>
