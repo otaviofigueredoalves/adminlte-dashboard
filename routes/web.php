@@ -10,4 +10,5 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/usuarios/{user}/editar',[UserController::class,'edit'])->name('users.edit');
     Route::put('/usuarios/{user}/editar',[UserController::class,'update'])->name('users.update');
     Route::put('/perfil/{user}/editar',[UserController::class,'updateProfile'])->name('users.updateProfile');
+    Route::put('/interesses/{user}/editar',[UserController::class,'updateInterests'])->name('users.updateInterests');
 });

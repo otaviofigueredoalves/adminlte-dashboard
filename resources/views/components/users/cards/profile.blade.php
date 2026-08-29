@@ -1,4 +1,4 @@
-<div class="card col-md-6">
+<div class="card col-md-6 mt-4">
     <form action="{{ route('users.updateProfile',$user) }}" method="POST">
         @csrf
         @method('PUT')

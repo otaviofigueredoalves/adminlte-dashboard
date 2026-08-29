@@ -28,8 +28,13 @@ class UserController extends Controller
                 'PJ' => 'Pessoa Jurídica',
                 'PF' => 'Pessoa física'
             ],
+            'interests' => [
+                ['label' => 'Futebol', 'value' => 'futebol'],
+                ['label' => 'BTS', 'value' => 'bts'],
+                ['label' => 'Games', 'value' => 'games']
+            ]
         ];
-        $user->load('profile');
+        $user->load('profile','interests');
         return view('components.users.edit', compact('user','config'));
     }
 
@@ -60,5 +65,20 @@ class UserController extends Controller
 
         return back()
             ->with('success','Perfil atualizado com sucesso!');
+    }
+
+    public function updateInterests(Request $request, User $user)
+    {
+        $input = $request->validate([
+            'interests' => ['nullable','array'],
+        ]);
+
+        $user->interests()->delete();
+        if(!empty($input['interests'])){
+            $user->interests()->createMany($input['interests']);
+        }
+        return back()
+            ->with('success','Interesses atualizados com sucesso!');
+
     }
 }
