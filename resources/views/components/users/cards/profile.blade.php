@@ -8,12 +8,12 @@
         <div class="card-body">
             <div class="mb-3">
                 <label for="name" class="form-label">Tipo de pessoa</label>
-                <select class="form-select" name="type">
+                <select class="form-select @error('type') is-invalid @enderror" name="type">
                     @foreach($config['types'] as $type => $value)
                         <option @selected(old('type') === $type || $user?->profile?->type === $type) value="{{ $type }}">{{ $value }}</option>
                     @endforeach
                 </select>
-                @error('name')
+                @error('type')
                 <div class="invalid-feedback">
                     {{ $message }}
                 </div>

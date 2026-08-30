@@ -9,7 +9,7 @@
             @foreach($config['interests'] as $interest)
                 <div class="form-check">
                     <input
-                        class="form-check-input"
+                        class="form-check-input @error('interests') is-invalid @enderror"
                         type="checkbox"
                         value="{{ $interest['value'] }}"
                         id="interest"
@@ -19,6 +19,11 @@
                     <label class="interest">
                         {{ $interest['label'] }}
                     </label>
+                    @error('interests')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
             @endforeach
         </div>

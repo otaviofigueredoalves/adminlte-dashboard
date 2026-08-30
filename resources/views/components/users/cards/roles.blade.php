@@ -10,7 +10,7 @@
             @foreach($config['roles'] as $role)
                 <div class="form-check">
                     <input
-                        class="form-check-input"
+                        class="form-check-input @error('role') is-invalid @enderror"
                         type="checkbox"
                         value="{{ $role->id }}"
                         id="role"
@@ -20,6 +20,11 @@
                     <label class="interest">
                         {{ $role->name }}
                     </label>
+                    @error('role')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
             @endforeach
         </div>
