@@ -26,7 +26,7 @@
                 @can('edit',auth()->user())
                     <li class="nav-item">
                         <a href="{{ route('users.index') }}" class="nav-link">
-                            <i class="nav-icon bi bi-person"></i>
+                            <i class="nav-icon bi bi-people"></i>
                             <p>Usuários</p>
                         </a>
                 @endcan
