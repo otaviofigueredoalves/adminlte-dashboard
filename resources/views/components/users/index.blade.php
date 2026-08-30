@@ -32,7 +32,11 @@
                                 <button type="submit" href="" class="btn btn-primary">Editar</button>
                             </form>
                             @can('Admin',$user)
-                                <button type="submit" class="btn btn-danger">Excluir</button>
+                                <form class="d-inline-block" action="{{ route('users.destroy',$user) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Excluir</button>
+                                </form>
                             @endcan
                         </td>
                     </tr>

@@ -107,4 +107,11 @@ class UserController extends Controller
             ->with('success','Cargo atualizado com sucesso!');
 
     }
+
+    public function destroy(User $user)
+    {
+        $user->delete();
+        return back()
+            ->with('success','Usuário deletado com sucesso!');
+    }
 }
