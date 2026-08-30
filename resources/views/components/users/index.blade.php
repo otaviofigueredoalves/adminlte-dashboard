@@ -5,6 +5,12 @@
     <x-parts.header-content :hTitle="$config['hTitle']"/>
 
     <div class="container-fluid">
+        <form action="{{ route('users.index') }}" method="get">
+            <div class="input-group mb-3" style="width: 450px">
+                <input type="text" class="form-control" placeholder="Pesquisar usuário" id="keyword" name="keyword" value="{{ request()?->keyword }}">
+                <button type="submit" class="input-group-text btn btn-primary" id="keyword">Pesquisar</button>
+            </div>
+        </form>
         <table class="table">
             <thead>
             <tr>
